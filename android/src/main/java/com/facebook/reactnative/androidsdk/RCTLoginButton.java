@@ -20,8 +20,6 @@
 
 package com.facebook.reactnative.androidsdk;
 
-import android.content.Intent;
-
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -33,7 +31,7 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.ThemedReactContext;
-import com.facebook.react.uimanager.events.RCTEventEmitter;
+import com.facebook.react.uimanager.events.ReactEventEmitter;
 
 import java.util.Set;
 
@@ -43,7 +41,7 @@ import java.util.Set;
  */
 public class RCTLoginButton extends LoginButton {
 
-    private CallbackManager mCallbackManager;
+    private final CallbackManager mCallbackManager;
     private AccessTokenTracker mAccessTokenTracker;
 
     public RCTLoginButton(ThemedReactContext context, CallbackManager callbackManager) {
@@ -63,7 +61,7 @@ public class RCTLoginButton extends LoginButton {
                     WritableMap event = Arguments.createMap();
                     event.putString("type", "logoutFinished");
                     ReactContext context = (ReactContext) getContext();
-                    context.getJSModule(RCTEventEmitter.class).receiveEvent(
+                    context.getJSModule(ReactEventEmitter.class).receiveEvent(
                             getId(),
                             "topChange",
                             event);
@@ -88,7 +86,7 @@ public class RCTLoginButton extends LoginButton {
                                 setToStringArray(loginResult.getRecentlyDeniedPermissions())));
                 event.putMap("result", result);
                 ReactContext context = (ReactContext) getContext();
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
+                context.getJSModule(ReactEventEmitter.class).receiveEvent(
                         getId(),
                         "topChange",
                         event);
@@ -103,7 +101,7 @@ public class RCTLoginButton extends LoginButton {
                 result.putBoolean("isCancelled", false);
                 event.putMap("result", result);
                 ReactContext context = (ReactContext) getContext();
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
+                context.getJSModule(ReactEventEmitter.class).receiveEvent(
                         getId(),
                         "topChange",
                         event);
@@ -118,7 +116,7 @@ public class RCTLoginButton extends LoginButton {
                 result.putBoolean("isCancelled", true);
                 event.putMap("result", result);
                 ReactContext context = (ReactContext) getContext();
-                context.getJSModule(RCTEventEmitter.class).receiveEvent(
+                context.getJSModule(ReactEventEmitter.class).receiveEvent(
                         getId(),
                         "topChange",
                         event);
