@@ -31,7 +31,6 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.share.model.AppGroupCreationContent;
 import com.facebook.share.model.GameRequestContent;
 import com.facebook.share.model.ShareContent;
 import com.facebook.share.model.ShareLinkContent;
@@ -137,15 +136,6 @@ public final class Utility {
             }
         }
         return shareContent;
-    }
-
-    public static AppGroupCreationContent buildAppGroupCreationContent(ReadableMap appGroupCreationContenMap) {
-        AppGroupCreationContent.Builder appGroupCreationContentBuilder = new AppGroupCreationContent.Builder();
-        appGroupCreationContentBuilder.setName(appGroupCreationContenMap.getString("name"));
-        appGroupCreationContentBuilder.setDescription(appGroupCreationContenMap.getString("description"));
-        appGroupCreationContentBuilder.setAppGroupPrivacy(
-                AppGroupCreationContent.AppGroupPrivacy.valueOf(appGroupCreationContenMap.getString("privacy")));
-        return appGroupCreationContentBuilder.build();
     }
 
     public static GameRequestContent buildGameRequestContent(ReadableMap gameRequestContentMap) {
