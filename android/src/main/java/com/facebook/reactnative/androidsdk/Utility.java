@@ -32,7 +32,6 @@ import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.share.model.AppGroupCreationContent;
-import com.facebook.share.model.AppInviteContent;
 import com.facebook.share.model.GameRequestContent;
 import com.facebook.share.model.ShareContent;
 import com.facebook.share.model.ShareLinkContent;
@@ -138,20 +137,6 @@ public final class Utility {
             }
         }
         return shareContent;
-    }
-
-    public static AppInviteContent buildAppInviteContent(ReadableMap appInviteContentMap) {
-        AppInviteContent.Builder appInviteContentBuilder = new AppInviteContent.Builder();
-        appInviteContentBuilder.setApplinkUrl(appInviteContentMap.getString("applinkUrl"));
-        if (appInviteContentMap.hasKey("previewImageUrl")) {
-            appInviteContentBuilder.setPreviewImageUrl(appInviteContentMap.getString("previewImageUrl"));
-        }
-        String promotionText = getValueOrNull(appInviteContentMap, "promotionText");
-        String promotionCode = getValueOrNull(appInviteContentMap, "promotionCode");
-        if (promotionText != null && promotionCode != null) {
-            appInviteContentBuilder.setPromotionDetails(promotionText, promotionCode);
-        }
-        return appInviteContentBuilder.build();
     }
 
     public static AppGroupCreationContent buildAppGroupCreationContent(ReadableMap appGroupCreationContenMap) {
