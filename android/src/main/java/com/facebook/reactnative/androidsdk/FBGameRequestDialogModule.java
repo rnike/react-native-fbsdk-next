@@ -28,7 +28,7 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.share.model.GameRequestContent;
-import com.facebook.share.widget.GameRequestDialog;
+import com.facebook.gamingservices.GameRequestDialog;
 
 /**
  * Provides functionality to send requests in games.
@@ -88,7 +88,7 @@ public class FBGameRequestDialogModule extends FBSDKCallbackManagerBaseJavaModul
             gameRequestDialog.registerCallback(getCallbackManager(), new GameRequestDialogCallback(promise));
             gameRequestDialog.show(gameRequestContent);
         } else {
-            promise.reject("No current activity.");
+            promise.reject(NAME, "No current activity.");
         }
     }
 }
